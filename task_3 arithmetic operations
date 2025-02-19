@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int num1,num2;
+    int sum,sub,multi,mod;
+    float div;
+
+    scanf("%d",& num1);
+    scanf("%d",& num2);
+    sum = num1 + num2;
+    sub = num1 - num2;
+    multi = num1*num2;
+    mod = num1 % num2;
+    if(num2 !=0){
+        div = (float)num1 / num2;
+    }
+    printf("sum = %d\n",sum);
+    printf("Difference  = %d\n",sub);
+    printf("Product  = %d\n",multi);
+    printf("Modulus  = %d\n",mod);
+    printf("Quotient  = %f",div);
+
+
+
+
+
+    return 0;
+}
+
