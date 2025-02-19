@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float radius;
+     printf("Enter radius ");
+    scanf("%f",& radius);
+    printf("diameter of circle = %f units\n ", 2*radius);
+    printf("Circumference of circle = %f units\n", 2*3.14*radius);
+    printf("Area of circle = %f sq.units", 3.14*radius*radius);
+
+
+    return 0;
+}
