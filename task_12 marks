@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+
+int main()
+{
+   float eng, phy, chem, math ,comp;
+    printf("Enter marks of five subjects: \n");
+    scanf("%f%f%f%f%f", &eng, &phy, &chem, &math, &comp);
+    float total = eng+phy+chem+math+comp;
+    float ave = total / 5;
+    float per = (total/500)*100;
+    printf("Total marks = %.2f\n", total);
+    printf("Average marks = %.2f\n", ave);
+    printf("Percentage = %.2f", per);
+
+}
