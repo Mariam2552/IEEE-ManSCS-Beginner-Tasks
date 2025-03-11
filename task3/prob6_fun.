@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+void printprimes(int firstnum,int lastnum);
+int isprime(int n);
+
+int main()
+{
+    int firstnum,lastnum;
+    scanf("%d %d",&firstnum,&lastnum);
+    printprimes( firstnum,lastnum);
+
+    return 0;
+}
+void printprimes(int firstnum,int lastnum){
+    printf("All prime number between %d to %d are: ", firstnum, lastnum);
+    while(firstnum<lastnum){
+        if(isprime(firstnum)){
+            printf("%d\n",firstnum);
+        }
+        firstnum++;
+    }
+
+}
+int isprime(int n){
+  for(int i=2;i<=sqrt(n);++i){
+    if(n%i==0){
+        return 0;
+    }
+  }
+          return 1;
+
+}
