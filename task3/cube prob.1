@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+double cube(double c);
+int main()
+{
+    double c;
+    int n;
+    scanf("%d",&n);
+    c=cube(n);
+    printf("Cube of %d is %f", n, c);
+
+    return 0;
+}
+
+double cube(double c){
+return(c*c*c);
+       }
