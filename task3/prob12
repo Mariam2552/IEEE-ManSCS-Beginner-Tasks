@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+   int low,upp;
+   scanf("%d%d",&low,&upp);
+   printf("Even/odd Numbers from %d to %d are: ", low, upp);
+   printevenodd(low,upp);
+    return 0;
+}
+printevenodd(int cur,int upp){
+  if(cur>upp){
+    return;
+  }
+  printf("%d, ",cur);
+  printevenodd(cur+2,upp);
+}
