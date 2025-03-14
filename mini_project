@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+#define REGULAR_SHIPPING_UNDER_10 2
+#define REGULAR_SHIPPING_10_OR_MORE 3
+#define OVERNIGHT_SHIPPING 5
+#define DISCOUNT_THRESHOLD 5
+#define DISCOUNT_RATE 0.2
+
+void printReceipt(char items[][50], float prices[], int overnight[], int count);
+
+int main() {
+    char items[100][50]; // Array to store item names
+    float prices[100]; // Array to store item prices
+    int overnight[100]; // Array to store overnight shipping preference
+    int count = 0; // Number of items in order
+    char choice;
+
+    printf("Welcome to the Online Order System!\n");
+    
+    do {
+        if (count >= 100) {
+            printf("You have reached the maximum number of items allowed!\n");
+            break;
+        }
+        
+        printf("Enter item name: ");
+        scanf(" %49s", items[count]);
+        
+        printf("Enter item price: ");
+        scanf("%f", &prices[count]);
+        
+        printf("Do you need overnight shipping? (1 for Yes, 0 for No): ");
+        scanf("%d", &overnight[count]);
+        
+        count++;
+        
+        printf("Do you want to add another item? (y/n): ");
+        scanf(" %c", &choice);
+        
+    } while (choice == 'y' || choice == 'Y');
+    
+    if (count < 2) {
+        printf("You must order at least 2 items. Order canceled.\n");
+        return 0;
+    }
+    
+    printReceipt(items, prices, overnight, count);
+    return 0;
+}
+
+void printReceipt(char items[][50], float prices[], int overnight[], int count) {
+    float total = 0, shipping = 0;
+    printf("\n--- Order Receipt ---\n");
+    
+    for (int i = 0; i < count; i++) {
+        float itemShipping = (prices[i] < 10) ? REGULAR_SHIPPING_UNDER_10 : REGULAR_SHIPPING_10_OR_MORE;
+        if (overnight[i]) {
+            itemShipping += OVERNIGHT_SHIPPING;
+        }
+        
+        shipping += itemShipping;
+        total += prices[i];
+        printf("Item: %s | Price: $%.2f | Shipping: $%.2f\n", items[i], prices[i], itemShipping);
+    }
+    
+    if (count > DISCOUNT_THRESHOLD) {
+        float discount = total * DISCOUNT_RATE;
+        total -= discount;
+        printf("Discount applied: -$%.2f\n", discount);
+    }
+    
+    printf("Shipping Total: $%.2f\n", shipping);
+    printf("Final Total: $%.2f\n", total + shipping);
+    printf("-----------------------\n");
+}
